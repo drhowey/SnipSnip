@@ -1,0 +1,7 @@
+pdflatex snipsnip.tex
+
+bibtex snipsnip
+
+pdflatex snipsnip.tex
+
+pdflatex snipsnip.tex

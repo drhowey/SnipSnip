@@ -1,0 +1,23 @@
+\begin{thebibliography}{2}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[\protect\citeauthoryear{Chen, Zhou, Cheng, Yang, Chu, Fan, Li,
+  Ho-Yin~Wong, Zheng, Zhu, Yu, Wang, Liu, Gao, Yu, Tang, Cui, Hao, Bossé,
+  Obeidat, Brandsma, Song, Kai-Wang~To, Chung~Sham, Yuen, and Li}{Chen
+  et~al.}{2015}]{chen:etal:15}
+Chen Y, Zhou J, Cheng Z, Yang S, Chu H, Fan Y, Li C, Ho-Yin~Wong B, Zheng S,
+  Zhu Y, Yu F, Wang Y, Liu X, Gao H, Yu L, Tang L, Cui D, Hao K, Bossé Y,
+  Obeidat M, Brandsma C, Song Y, Kai-Wang~To K, Chung~Sham P, Yuen K, Li L.
+  2015.
+\newblock {Functional variants regulating LGALS1 (Galectin 1) expression affect
+  human susceptibility to influenza A(H7N9)}.
+\newblock Scientific Reports 5:8517.
+
+\bibitem[\protect\citeauthoryear{Howey and Cordell}{Howey and
+  Cordell}{2014}]{howey:etal:14}
+Howey R, Cordell HJ. 2014.
+\newblock {Imputation without doing imputation: a new method for the detection
+  of non-genotyped causal variants}.
+\newblock Genet Epidemiol 38:173--190.
+
+\end{thebibliography}

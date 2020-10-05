@@ -1,0 +1,814 @@
+*title* SnipSnip: GWAS for Poorly Tagged Data using Multiple SNPs */title*
+*stylefile* snipsnipstyles.css */stylefile*
+*logo* snipsniplogo.png */logo*
+*logowidth* 200 */logowidth*
+
+*webpage*
+
+*webpage-name* index */webpage-name*
+
+*webpage-title* Home */webpage-title*
+
+<h1>Welcome to the webpage of SnipSnip!</h1>
+
+
+<h2>Documentation</h2>
+
+* Documentation for SnipSnip is taken from these web pages and may be downloaded from here: <a href="snipsnip.pdf">snipsnip.pdf</a>. *
+
+<h2>Contact</h2>
+
+ * Please contact <a href="http://www.staff.ncl.ac.uk/richard.howey/">Richard Howey</a> with any queries. *
+
+<h2>Citation</h2>
+
+*
+For details concerning the methodology of the SnipSnip GWAS, please see the accompanying manuscript *cite* howey:etal:14 */cite*.
+* 
+
+*codeexample*
+@article{howey:14,
+   author = "Howey, R and Cordell, H J",
+   title = "Imputation Without Doing Imputation: A New Method for the Detection of Non-Genotyped Causal Variants",
+   journal = "Genet. Epidemiol.",
+   volume = "38",
+   number = "3",
+   pages = "173-190",
+   year = "2014"
+}
+*/codeexample*
+
+
+
+*
+Copyright, 2013 Richard Howey and Heather Cordell, GNU General Public License, version 3.
+*
+
+*/webpage*
+
+******************
+*webpage*
+
+*webpage-name* download */webpage-name*
+
+*webpage-title* Download */webpage-title*
+
+<h1>Download</h1>
+
+<h2>Executables</h2>
+
+*tablel*
+*tr* Platform & File */tr*
+*tr* *html* Linux (x86_64) */html* *tex* Linux (x86\_64) */tex* & *html* <a href="snipsnip-v1.1-linux-x86_64.zip">snipsnip-v1.1-linux-x86_64.zip</a> */html* *tex* snipsnip-v1.1-linux-x86\_64.zip */tex* */tr*
+*tr* *html* Linux (x86_32) */html* *tex* Linux (x86\_32) */tex* & *html* <a href="snipsnip-v1.1-linux-x86_32.zip">snipsnip-v1.1-linux-x86_32.zip</a> */html* *tex* snipsnip-v1.1-linux-x86\_32.zip */tex* */tr*
+*tr* *html* Windows (x86_64) */html* *tex* Windows (x86\_64) */tex* & *html* <a  href="snipsnip-v1.1-windows-x86_64.zip">snipsnip-v1.1-windows-x86_64.zip</a> */html* *tex* snipsnip-v1.1-windows-x86\_64.zip */tex* */tr*
+*tr* *html* Windows (x86_32) */html* *tex* Windows (x86\_32) */tex* & *html* <a  href="snipsnip-v1.1-windows-x86_32.zip">snipsnip-v1.1-windows-x86_32.zip</a> */html* *tex* snipsnip-v1.1-windows-x86\_32.zip */tex* */tr*
+*/tablel*
+
+
+<h2>Source Code</h2>
+
+* Source code for SnipSnip (C/C++) may be downloaded from here: <a href="snipsnip-v1.1-code.zip">snipsnip-v1.1-code.zip</a>. *
+
+
+
+*/webpage*
+*********************
+*webpage*
+
+*webpage-name* contact */webpage-name*
+
+*webpage-title* Contact */webpage-title*
+
+<h1>Contact</h1>
+
+ * Please contact <a href="http://www.staff.ncl.ac.uk/richard.howey/">Richard Howey</a> with any queries. *
+
+*/webpage*
+
+***************************************
+***************************************
+
+*section*
+
+*section-name* introduction */section-name*
+
+*section-title* Introduction */section-title*
+
+*
+The SnipSnip program is the implementation of a GWAS method to detect causal variants using poorly tagged data by using multiple SNPs in low LD with the causal variant. Genome-wide association studies (GWAS) allow the detection of non-genotyped disease causing variants through the testing of nearby genotyped SNPs that are in strong linkage disequilibrium (LD) with the causal variant. This approach is naturally flawed when there are no genotyped SNPs in strong LD with the causal variant. There may, however, be several genotyped SNPs in weak LD with the causal variant that, when considered together, provide equivalent information. This observation provides the motivation for the popular (but computationally intensive) imputation-based approaches that are often used.
+*
+
+*
+SnipSnip is designed for the scenario where there are several genotyped SNPs in weak LD with a causal variant. Our approach proceeds by selecting, for each genotyped *q* anchor */q* SNP, a nearby genotyped *q* partner */q* SNP (chosen, on the basis of a specific algorithm we have developed, to be the optimal partner). These two SNPs are then used as predictors in a linear or logistic regression analysis, in order to generate a final significance test associated with the anchor SNP. *
+
+*
+SnipSnip is designed for use with *b* unrelated individuals */b* either in a case-control analysis or a quantitative trait analysis.  
+*
+
+*
+Our method, in some cases, potentially eliminates the need for more complex methods such as sequencing and imputation or haplotype analysis, and provides a useful additional test that may be used with existing GWAS data to identify genetic regions of interest.
+*
+
+*
+For an example application of SnipSnip see *cite* chen:etal:15 */cite*.
+*
+
+
+***************
+
+*subsection*
+
+*subsection-name* information */subsection-name*
+
+*subsection-title* Program information and citation */subsection-title*
+
+*
+For details concerning the methodology of the SnipSnip GWAS, please see the accompanying manuscript *cite* howey:etal:14 */cite*.
+* 
+
+*
+The program SnipSnip is written in C++ and executables are available for Linux and Windows from the download page, as well as the source code.
+*
+
+*
+*
+
+*
+Copyright, 2013 Richard Howey and Heather Cordell, GNU General Public License, version 3. 
+*
+
+*/subsection*
+
+*/section*
+
+***************************
+***************************************
+
+*section*
+
+*section-name* installation */section-name*
+
+*section-title* Installation */section-title*
+
+*
+Download an executable file from the *html* <a href="download.html">download</a>&nbsp; */html* *tex* home$\:$ */tex* page for your system and off you go, or do the following.
+*
+
+*numlist*
+
+*item* Download the code from the download page.
+
+*item* Compile it by typing something like the following:
+ 
+*codeexample* g++ -O3 *.cpp -o snipsnip */codeexample*
+
+*item* Start analysing your data with SnipSnip!
+
+*/numlist*
+
+*/section*
+
+***************************
+
+*section*
+
+*section-name*
+using
+*/section-name*
+
+*section-title*
+Using SnipSnip
+*/section-title*
+
+********************
+
+*subsection*
+
+*subsection-name*
+basic-usage
+*/subsection-name*
+
+*subsection-title*
+Basic Usage
+*/subsection-title*
+
+*
+The program SnipSnip takes a PLINK binary pedigree file as input. Basic usage of the program is given by typing:
+*
+
+*codeexample*
+./snipsnip -o myresults.dat mydata.bed
+*/codeexample*
+
+*/subsection*
+
+**********************
+
+
+*subsection*
+
+*subsection-name*
+options
+*/subsection-name*
+
+*subsection-title*
+Options
+*/subsection-title*
+
+*
+Typing *code* snipsnip */code* with no options will output usage details:
+*
+
+*codeexample*
+SnipSnip: Imputation without imputation, v1.1
+---------------------------------------------
+Copyright 2013 Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Usage:
+  ./snipsnip [options] pedigree.bed 
+ or ./snipsnip -pf parameterfile [pedigree.bed]
+
+Options:
+  -window-size n    -- fix window at n SNPS, n must be even
+  -window-size-bp x -- size of window, x, in kB
+  -start a          -- start analysis from SNP number a
+  -start-end a b    -- start and end analysis from SNP numbers a to b
+  -i file.bed       -- input binary pedigree file, file.bed
+  -o results.dat    -- output results file, results.dat
+  -log results.log  -- log filename, results.log
+  -covar covars.dat -- covariate filename, covars.dat
+  -covar-number no  -- covariate number, no
+  -covar-name na    -- covariate name, na
+  -linear           -- use linear regression
+  -mqtv x           -- missing quantitive trait value for linear regression
+  -dominant         -- use dominant correlation partner metric
+  -recessive        -- use recessive correlation partner metric
+  -lr               -- perform standard logistic(linear) regression tests
+  -excsnp bp        -- exclude SNP(base pair bp) as partner
+  -so               -- suppress output to screen
+
+Default Options in Effect:
+  -window-size 10
+  -o snipsnipResults.dat
+
+*/codeexample*
+
+*/subsection*
+
+*************
+
+*subsection*
+
+*subsection-name* parameterfile */subsection-name*
+
+*subsection-title* Parameter file */subsection-title*
+
+*
+A parameter file, *code* .pf */code*, may be used with SnipSnip instead of writing all of the options on the command line. To use a parameter file simply type: 
+*
+
+*codeexample*
+./snipsnip myparameters.pf
+*/codeexample*
+
+*
+The parameter file should be a text file with one option written on each line. For example, to perform an analysis with a SNP window of size 12, perform test for SNPs 100 to 200, include single SNP logistic regression results, with input file *code* mydata.bed */code* and output file *code* myresults.dat */code* the file *code* myparameters.pf */code* would be as follows: 
+*
+
+*codeexample*
+-window-size 12
+-start-end 100 200
+-lr
+-i mydata.bed
+-o myresults.dat
+*/codeexample*
+
+*
+It is also possible to add comments to the file provided that the *q*-*/q* character is not used, and to comment out any options by placing another character in front of any *q*-*/q*. For example, the above parameter file could be edited as follows:
+*
+
+*codeexample*
+I will use this window size
+-window-size 12
+
+Must remember to analysis other SNPs later
+-start-end 100 200
+
+Check single SNP logistic regression results also
+-lr
+
+This is my data
+-i mydata.bed
+
+Output the results here
+-o myresults.dat
+
+When I run lots of things I will suppress the output to screen 
+#-so
+*/codeexample*
+
+*/subsection*
+
+
+********************************
+
+
+
+*subsection*
+
+*subsection-name*
+input
+*/subsection-name*
+
+*subsection-title*
+Input
+*/subsection-title*
+
+*
+SnipSnip takes standard PLINK binary pedigree files, *code* .bed */code*, as input.
+This requires that the corresponding *code* .bim */code* and *code* .fam */code*, files are also available. A text PLINK pedigree file, *code* .ped */code*, with corresponding map file, *code* .map */code*, may be used to create a binary file using PLINK as follows:
+
+*codeexample*
+plink --noweb --file mydata --make-bed --out myfile
+*/codeexample*
+
+*
+This will create the binary pedigree file, *code* myfile.bed */code*, map file, *code* myfile.bim */code*, and family file, *code* myfile.fam */code* required for use with SnipSnip.
+*
+
+*/subsection*
+
+***************
+
+*subsection*
+
+*subsection-name*
+output
+*/subsection-name*
+
+*subsection-title*
+Output
+*/subsection-title*
+
+*
+The main results file is given by a text file where each row gives the results for each SNP. For example, using the default options gives the follows: 
+*
+
+*codeexample*
+SNP CHR ID BP PARTNER_ID PARTNER_BP CORRELATION SCORE FIT_STATUS CHISQ P
+1 0 rs7112558 5569598 rs11038270 5572829 0.1875740 84.85855 Y 1.56046028 0.2115978
+2 0 rs7123372 5569768 rs12786429 5570176 0.5597501 68.06836 Y 0.39244220 0.5310185
+...
+*/codeexample*
+
+*
+The columns of the results file, which will differ depending on the chosen options, are as follows: 
+*
+
+*tablel*
+*tr* Column & Description */tr*
+*tr* SNP & The SNP number (of the anchor SNP) as it appears in file. */tr*
+*tr* CHR & Chromosome of the anchor SNP. */tr*
+*tr* ID & The name of the anchor SNP. */tr*
+*tr* BP & The base pair position of the anchor SNP. */tr*
+*tr* *html* PARTNER_ID */html* *tex* PARTNER\_ID */tex*  & The name of the partner SNP. */tr*
+*tr* *html* PARTNER_BP */html* *tex* PARTNER\_BP */tex*  & The base pair position of the partner SNP. */tr*
+*tr* CORRELATION & The correlation ( $r^2$ ) between the anchor SNP and partner SNP. */tr*
+*tr* SCORE & The score (0-100) between the anchor SNP and partner SNP. High scores are best. */tr*
+*tr* *html* FIT_STATUS */html* *tex* FIT\_STATUS */tex*  & A *q* Y */q* indicates that, yes, the model fitted with no problems. An *q* N */q* indicates that, no, the model did not fit, no doubt due to insufficient data in the cases and/or controls. A *q* D */q* indicates insufficient data in the cases and/or controls to even bother to try and fit the model. */tr*
+*tr* CHISQ & The $\chi^2$ test statistic with one degree of freedom from performing a likelihood ratio test comparing logistic regression models. */tr*
+*tr* FSTAT & The F test statistic with 1 and *i* number of subjects */i*-3 degrees of freedom from performing an F-test comparing linear regression models. */tr*
+*tr* P & The *i* p */i*-value for the test of association of the anchor SNP. */tr*
+*tr* *html* FIT_STATUS_LR */html* *tex* FIT\_STATUS\_LR */tex* & The fit status for single SNP logistic (or linear) regression at the anchor SNP.  */tr*
+*tr* *html* CHISQ_LR */html* *tex* CHISQ\_LR */tex* & The $\chi^2$ test statistic with one degree of freedom for single SNP logistic regression at the anchor SNP. */tr*
+*tr* *html* FSTAT_LR */html* *tex* FSTAT\_LR */tex* & The F test statistic with 1 and *i* number of subjects */i*-3 degrees of freedom for single SNP linear regression at the anchor SNP. */tr*
+*tr* *html* P_LR */html* *tex* P\_LR */tex* & The *i* p */i*-value for the test of association of the anchor SNP using single SNP logistic (or linear) regression. */tr*
+*/tablel*
+
+*/subsection*
+
+***************
+
+*/section*
+
+********************************
+
+
+
+*section*
+
+*section-name*
+snipsnip-gwas
+*/section-name*
+
+*section-title*
+SnipSnip GWAS
+*/section-title*
+
+*
+A genome-wide association study (GWAS) can be performed using SnipSnip where each SNP is considered in turn as the *i* anchor */i* SNP and is tested for association with help from the *i* partner */i* SNP, see figure *figref* anchor */figref*.  
+*
+
+*figure*
+anchor.png
+
+*caption*
+Diagram illustrating the anchor SNP and partner SNP with a SNP window of size 6.
+*/caption*
+*label* anchor */label*
+*width* 800 */width*
+*widthtex* 400 */widthtex*
+*/figure*
+
+
+*subsection*
+
+*subsection-name*
+anchor-snp
+*/subsection-name*
+
+*subsection-title*
+Anchor SNP
+*/subsection-title*
+
+*
+The anchor SNP is simply the SNP that is being tested for association. 
+*
+
+
+*/subsection*
+
+***************
+
+
+*subsection*
+
+*subsection-name*
+partner-snp
+*/subsection-name*
+
+*subsection-title*
+Partner SNP
+*/subsection-title*
+
+*
+The partner SNP is chosen from a SNP window surrounding the anchor SNP and is the SNP with the *q* best */q* (not highest) LD with the anchor SNP. See *ref* metrics */ref* for more infomation on how the partner SNP is chosen.
+*
+
+
+*/subsection*
+
+***************
+
+
+*subsection*
+
+*subsection-name*
+ai-test
+*/subsection-name*
+
+*subsection-title*
+AI Test
+*/subsection-title*
+
+*
+The artificial-imputation (AI) test is a likelihood ratio test comparing a logistic regression model with the partner SNP only against one with both the anchor SNP and partner SNP. The test produces a $\chi^2$ test statistic with one degree of freedom and tests the significance of the anchor SNP whilst conditioning for the partner SNP. An equivilent linear regression test is also possible.  
+*
+
+*
+This is essentially a simple test and is only effective due to the manner in which the partner SNP is chosen.  
+*
+
+*
+For more details concerning the methodology, please read the accompanying manuscript *cite* howey:etal:14 */cite*.
+*
+
+*/subsection*
+
+*/section*
+
+********************************
+
+
+
+*section*
+
+*section-name*
+metrics
+*/section-name*
+
+*section-title*
+Partner SNP Metrics
+*/section-title*
+
+*
+The partner SNP is chosen using the correlation between the anchor SNP and each potential partner SNP. The correlations are mapped to a score between 0 and 100, with 100 being the best. The SNP with the highest score is chosen as the partner SNP. The curves below (figure *figref* metric-fig */figref*) show the correlation-score maps assuming disease models which are multiplicative, dominant and recessive. 
+*
+
+*figure*
+metrics.png
+
+*caption*
+Plots of the partner SNP correlation metrics. Left to right, assuming a multiplicative, dominant and recessive causal variant model respectively. 
+*/caption*
+*label* metric-fig */label*
+*width* 600 */width*
+*widthtex* 400 */widthtex*
+*/figure*
+
+*
+It is recommended that the default multiplicative causal variant model is used if the penetrances of any causal variants are unknown. The top 10 percent correlations are then in the interval [0.26, 0.36].
+*
+
+*
+If it is known that the causal variant is dominant (recessive) then it should be beneficial to use the dominant (recessive) correlation metric using the *code* -dominant */code* (*code* -recessive */code*) option. (Note that the AI test still uses a multiplicative model and that this option only affects how the partner SNP is chosen.)
+*
+
+*
+Again, for more details concerning the methodology, please read the accompanying manuscript *cite* howey:etal:14 */cite*.
+*
+
+*/section*
+
+********************************
+
+********************************
+*section*
+
+*section-name*
+windowsize
+*/section-name*
+
+*section-title*
+SNP Window Size
+*/section-title*
+
+*
+The window size of the SNP window used to pick the partner SNP for each anchor SNP is configurable using the *code* -window-size */code* option. It is only possible to set the SNP window size to an even number since the SNP window is in front and behind the anchor SNP. For example, to set the SNP window to size 12: 
+*
+
+*codeexample*
+./snipsnip -window-size 12 -o myresults.dat mydata.bed
+*/codeexample*
+
+*
+There is no *q* correct */q* window size, but 10 has proved in practise to be a good comprise between too small and too big, and is therfore set as the default. It is unlikely that a SNP window size of 20 or greater will be useful. If performing multiple GWASs with different SNP window sizes care should be exercised for multiple testing issues. 
+*
+
+*
+It is also possible to set the SNP window using base pair position, so that any SNP within a certain base pair position distance of the anchor SNP is considered for the partner SNP. For example, to set the SNP window a base pair position size of 110,000: 
+*
+
+*codeexample*
+./snipsnip -window-size-bp 110000 -o myresults.dat mydata.bed
+*/codeexample*
+ 
+*
+However, it is recommended to use a fixed number of SNPs for the SNP window to increase the chances of picking a good partner SNP.
+*
+
+*
+Again, for more details concerning the methodology, please read the accompanying manuscript *cite* howey:etal:14 */cite*.
+*
+
+
+
+*/section*
+
+********************************
+
+
+
+
+********************************
+*section*
+
+*section-name*
+linear
+*/section-name*
+
+*section-title*
+Linear Regression
+*/section-title*
+
+*
+It is possible to use a quantitative trait for the phenotype instead of the case-control status. To do this use the *code* -linear */code* option. For example:
+*
+
+*codeexample*
+./snipsnip -linear -o myresults.dat mydata.bed
+*/codeexample*
+ 
+*
+In this case the phenotype column in the *code* .fam */code* file should contain the phenotype of interest. The missing quantitative trait value is set by default to -9. This can be changed with the  *code* -mqtv */code* option. For example, to set the missing quantitative trait value to 0:
+*
+
+*codeexample*
+./snipsnip -linear -mqtv 0 -o myresults.dat mydata.bed
+*/codeexample*
+ 
+*
+When using linear regression the partner SNP is chosen in exactly the same manner as before and the same equivilent models are compared, but this time using an F-test.
+*
+
+
+*
+Again, for more details concerning the methodology, please read the accompanying manuscript *cite* howey:etal:14 */cite*.
+*
+
+*/section*
+********************************
+*section*
+
+*section-name*
+covariates
+*/section-name*
+
+*section-title*
+Covariates
+*/section-title*
+
+*
+It is possible to perform the AI test with a set of covariates. To do this use the *code* -covar */code* option. For example:
+*
+
+*codeexample*
+./snipsnip -covar covariates.dat -o myresults.dat mydata.bed
+*/codeexample*
+ 
+*
+The format of the covariate file is the same as PLINK covariate files. That is, a text file where the first column is the pedigree ID, the second column is the individual ID and the remaining columns are the covariate values, where a value of -9 denotes a missing value (this may be changed with the *code* -mqtv */code* option). For example, a covariate file with 3 covariates may look as follows:
+*
+
+*codeexample*
+PEDID ID SMOKE ALCOHOL EX 
+WXA_T1233 WXA_T120 0.0037 0.0033 0.0207
+WXA_T1233 WXA_T121 -0.0019 0.022 0.0257
+WXA_T1234 WXA_T987 0.0104 0.0096 -0.0154
+...
+*/codeexample*
+ 
+*
+The header line may be present or not. The covariates may be chosen with the header names as follows:
+*
+
+*codeexample*
+./snipsnip -covar covariates.dat -covar-name ALCOHOL,EX -o myresults.dat mydata.bed
+*/codeexample*
+
+*
+or
+*
+
+*codeexample*
+./snipsnip -covar covariates.dat -covar-name ALCOHOL-EX -o myresults.dat mydata.bed
+*/codeexample*
+
+*
+to include all covariates between and including these two. Note that no spaces should be used between the chosen covariate values. The covariates may also be chosen by their numbers. So the above may be written:
+*
+
+*codeexample*
+./snipsnip -covar covariates.dat -covar-number 2,3 -o myresults.dat mydata.bed
+*/codeexample*
+
+*
+or
+*
+
+*codeexample*
+./snipsnip -covar covariates.dat -covar-number 2-3 -o myresults.dat mydata.bed
+*/codeexample*
+
+
+
+*/section*
+
+********************************
+********************************
+
+*section*
+
+*section-name*
+example
+*/section-name*
+
+*section-title*
+SnipSnip Examples
+*/section-title*
+
+
+*subsection*
+
+*subsection-name*
+ex-basic
+*/subsection-name*
+
+*subsection-title*
+Basic example
+*/subsection-title*
+
+
+*
+Using the example data given with the SnipSnip download, perform a basic SnipSnip analysis as follows:
+*
+
+*codeexample*
+./snipsnip -o results-ExampleData.dat exampleData.bed
+*/codeexample*
+
+*
+In R type:
+*
+
+*codeexample*
+exampleData<-read.table("results-ExampleData.dat", header=T)
+
+plot(exampleData$BP/10^6, -log10(exampleData$P), main="SnipSnip Test",
+ xlab=expression(bp~position~(Mb)), ylab=expression(-log[10](p-value)), ylim=c(0,15)) 
+abline(h=8, lty=2)
+*/codeexample*
+
+*
+This will produce the following plot:
+*
+
+
+*figure*
+exampleSS.png
+
+*caption*
+Manhattan plot of AI test results. 
+*/caption*
+*label* example-fig */label*
+*width* 300 */width*
+*widthtex* 200 */widthtex*
+*/figure*
+
+
+*
+To also perform standard logistic regression use the *code* -lr */code* option as follows:
+*
+
+*codeexample*
+./snipsnip -lr -o results-ExampleData-LR.dat exampleData.bed
+*/codeexample*
+
+*
+To plot the standard logistic regression test results type:
+*
+
+*codeexample*
+exampleDataLR<-read.table("results-ExampleData-LR.dat", header=T)
+
+plot(exampleDataLR$BP/10^6, -log10(exampleDataLR$P_LR), main="Standard Logistic Regression",
+ xlab=expression(bp~position~(Mb)), ylab=expression(-log[10](p-value)), ylim=c(0,15)) 
+abline(h=8, lty=2)
+
+*/codeexample*
+
+*
+This will produce the following plot:
+*
+
+*figure*
+exampleSS_LR.png
+
+*caption*
+Manhattan plot of standard logistic regression test results. 
+*/caption*
+*label* example-lr-fig */label*
+*width* 300 */width*
+*widthtex* 200 */widthtex*
+*/figure*
+
+*/subsection*
+
+
+*subsection*
+
+*subsection-name*
+X-chromosome
+*/subsection-name*
+
+*subsection-title*
+X chromosome
+*/subsection-title*
+
+*
+SnipSnip does not do anything special with the analysis of SNPs on the X chromosome - the SNPs will be treated as if they were autosomal. (So females will end up with genotypes coded 0,1,2 and males will end up with genotypes coded 0,2). This has the potential to create false positives if you are dealing with a disease that has different prevalance in males and females; for this reason it is recommended to always include gender as a covariate if you are analysing X-chromosomal SNPs. See *ref* covariates */ref* for details on handling covariates.
+*
+
+*
+If you have no other covariates to consider then it is possible to use the *code* .fam */code* file as the covariate file by choosing the sex column as the covariate as follows: 
+*
+
+*codeexample*
+./snipsnip -covar chromosome23.fam -covar-number 3 -o myresults-chr23.dat chromosome23.bed
+*/codeexample*
+
+*/subsection*
+
+*/section*

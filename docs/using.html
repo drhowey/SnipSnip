@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>SnipSnip: GWAS for Poorly Tagged Data using Multiple SNPs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" type="text/css" href="snipsnipstyles.css" />
+<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body>
+<!-- Begin Wrapper -->
+<div id="wrapper">
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td>
+<!-- Begin Header -->
+<div id="header">
+<table><tr>
+<td>
+<img width="200" src="snipsniplogo.png" alt="SnipSnip: GWAS for Poorly Tagged Data using Multiple SNPs"/>
+</td>
+<td>
+<p style="margin-left: 1em;">SnipSnip: GWAS for Poorly Tagged Data using Multiple SNPs</p>
+</td></tr>
+</table>
+</div>
+<!-- End Header -->
+<!-- Begin Menu Navigation -->
+<ul id="menunav">
+<li><a href="index.html">Home</a></li>
+<li><a href="download.html">Download</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+<!-- End Menu Navigation -->
+
+</td></tr>
+<tr><td>
+<table border="0" cellpadding="0" cellspacing="0"><tr>
+<td valign="top">
+<!-- Begin Left Column -->
+<div id="leftcolumn">
+<!-- Begin Contents Navigation -->
+<div id="navcontainer">
+<ul>
+<li><a href="introduction.html">1 Introduction</a>
+<ul>
+<li><a href="introduction.html#information">1.1 Program information and citation</a></li>
+</ul>
+</li>
+<li><a href="installation.html">2 Installation</a>
+</li>
+<li><a href="using.html">3 Using SnipSnip</a>
+<ul>
+<li><a href="using.html#basic-usage">3.1 Basic Usage</a></li>
+<li><a href="using.html#options">3.2 Options</a></li>
+<li><a href="using.html#parameterfile">3.3 Parameter file</a></li>
+<li><a href="using.html#input">3.4 Input</a></li>
+<li><a href="using.html#output">3.5 Output</a></li>
+</ul>
+</li>
+<li><a href="snipsnip-gwas.html">4 SnipSnip GWAS</a>
+<ul>
+<li><a href="snipsnip-gwas.html#anchor-snp">4.1 Anchor SNP</a></li>
+<li><a href="snipsnip-gwas.html#partner-snp">4.2 Partner SNP</a></li>
+<li><a href="snipsnip-gwas.html#ai-test">4.3 AI Test</a></li>
+</ul>
+</li>
+<li><a href="metrics.html">5 Partner SNP Metrics</a>
+</li>
+<li><a href="windowsize.html">6 SNP Window Size</a>
+</li>
+<li><a href="linear.html">7 Linear Regression</a>
+</li>
+<li><a href="covariates.html">8 Covariates</a>
+</li>
+<li><a href="example.html">9 SnipSnip Examples</a>
+<ul>
+<li><a href="example.html#ex-basic">9.1 Basic example</a></li>
+<li><a href="example.html#X-chromosome">9.2 X chromosome</a></li>
+</ul>
+</li>
+<li><a href="references.html">References</a></li>
+</ul>
+</div>
+<!-- End Contents Navigation -->
+</div>
+<!-- End Left Column -->
+</td>
+<td valign="top">
+<!-- Begin Right Column -->
+<div id="rightcolumn">
+<h1>3 Using SnipSnip</h1>
+<h2><a name="basic-usage">3.1 Basic Usage</a></h2>
+<p>
+The program SnipSnip takes a PLINK binary pedigree file as input. Basic usage of the program is given by typing: </p>
+<pre>
+./snipsnip -o myresults.dat mydata.bed
+</pre>
+<h2><a name="options">3.2 Options</a></h2>
+<p>
+Typing <tt>snipsnip</tt> with no options will output usage details: </p>
+<pre>
+SnipSnip: Imputation without imputation, v1.1
+---------------------------------------------
+Copyright 2013 Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Usage:
+  ./snipsnip [options] pedigree.bed 
+ or ./snipsnip -pf parameterfile [pedigree.bed]
+
+Options:
+  -window-size n    -- fix window at n SNPS, n must be even
+  -window-size-bp x -- size of window, x, in kB
+  -start a          -- start analysis from SNP number a
+  -start-end a b    -- start and end analysis from SNP numbers a to b
+  -i file.bed       -- input binary pedigree file, file.bed
+  -o results.dat    -- output results file, results.dat
+  -log results.log  -- log filename, results.log
+  -covar covars.dat -- covariate filename, covars.dat
+  -covar-number no  -- covariate number, no
+  -covar-name na    -- covariate name, na
+  -linear           -- use linear regression
+  -mqtv x           -- missing quantitive trait value for linear regression
+  -dominant         -- use dominant correlation partner metric
+  -recessive        -- use recessive correlation partner metric
+  -lr               -- perform standard logistic(linear) regression tests
+  -excsnp bp        -- exclude SNP(base pair bp) as partner
+  -so               -- suppress output to screen
+
+Default Options in Effect:
+  -window-size 10
+  -o snipsnipResults.dat
+
+</pre>
+<h2><a name="parameterfile">3.3 Parameter file</a></h2>
+<p>
+A parameter file, <tt>.pf</tt>, may be used with SnipSnip instead of writing all of the options on the command line. To use a parameter file simply type: </p>
+<pre>
+./snipsnip myparameters.pf
+</pre>
+<p>
+The parameter file should be a text file with one option written on each line. For example, to perform an analysis with a SNP window of size 12, perform test for SNPs 100 to 200, include single SNP logistic regression results, with input file <tt>mydata.bed</tt> and output file <tt>myresults.dat</tt> the file <tt>myparameters.pf</tt> would be as follows: </p>
+<pre>
+-window-size 12
+-start-end 100 200
+-lr
+-i mydata.bed
+-o myresults.dat
+</pre>
+<p>
+It is also possible to add comments to the file provided that the &ldquo;-&rdquo; character is not used, and to comment out any options by placing another character in front of any &ldquo;-&rdquo;. For example, the above parameter file could be edited as follows: </p>
+<pre>
+I will use this window size
+-window-size 12
+
+Must remember to analysis other SNPs later
+-start-end 100 200
+
+Check single SNP logistic regression results also
+-lr
+
+This is my data
+-i mydata.bed
+
+Output the results here
+-o myresults.dat
+
+When I run lots of things I will suppress the output to screen 
+#-so
+</pre>
+<h2><a name="input">3.4 Input</a></h2>
+<p>
+SnipSnip takes standard PLINK binary pedigree files, <tt>.bed</tt>, as input. This requires that the corresponding <tt>.bim</tt> and <tt>.fam</tt>, files are also available. A text PLINK pedigree file, <tt>.ped</tt>, with corresponding map file, <tt>.map</tt>, may be used to create a binary file using PLINK as follows: <pre>
+plink --noweb --file mydata --make-bed --out myfile
+</pre>
+</p>
+<p>
+This will create the binary pedigree file, <tt>myfile.bed</tt>, map file, <tt>myfile.bim</tt>, and family file, <tt>myfile.fam</tt> required for use with SnipSnip. </p>
+<h2><a name="output">3.5 Output</a></h2>
+<p>
+The main results file is given by a text file where each row gives the results for each SNP. For example, using the default options gives the follows: </p>
+<pre>
+SNP CHR ID BP PARTNER_ID PARTNER_BP CORRELATION SCORE FIT_STATUS CHISQ P
+1 0 rs7112558 5569598 rs11038270 5572829 0.1875740 84.85855 Y 1.56046028 0.2115978
+2 0 rs7123372 5569768 rs12786429 5570176 0.5597501 68.06836 Y 0.39244220 0.5310185
+...
+</pre>
+<p>
+The columns of the results file, which will differ depending on the chosen options, are as follows: </p>
+<table id="tablestylel" class="center">
+<tr><th>Column </th><th>Description</th></tr>
+<tr class="alt"><td valign="top">SNP </td><td valign="top">The SNP number (of the anchor SNP) as it appears in file.</td></tr>
+<tr><td valign="top">CHR </td><td valign="top">Chromosome of the anchor SNP.</td></tr>
+<tr class="alt"><td valign="top">ID </td><td valign="top">The name of the anchor SNP.</td></tr>
+<tr><td valign="top">BP </td><td valign="top">The base pair position of the anchor SNP.</td></tr>
+<tr class="alt"><td valign="top">PARTNER_ID</td><td valign="top">The name of the partner SNP.</td></tr>
+<tr><td valign="top">PARTNER_BP</td><td valign="top">The base pair position of the partner SNP.</td></tr>
+<tr class="alt"><td valign="top">CORRELATION </td><td valign="top">The correlation ( <img src="http://latex.codecogs.com/png.latex?\inline r^2 \small " alt="r^2"/> ) between the anchor SNP and partner SNP.</td></tr>
+<tr><td valign="top">SCORE </td><td valign="top">The score (0-100) between the anchor SNP and partner SNP. High scores are best.</td></tr>
+<tr class="alt"><td valign="top">FIT_STATUS</td><td valign="top">A &ldquo;Y&rdquo; indicates that, yes, the model fitted with no problems. An &ldquo;N&rdquo; indicates that, no, the model did not fit, no doubt due to insufficient data in the cases and/or controls. A &ldquo;D&rdquo; indicates insufficient data in the cases and/or controls to even bother to try and fit the model.</td></tr>
+<tr><td valign="top">CHISQ </td><td valign="top">The <img src="http://latex.codecogs.com/png.latex?\inline \chi^2 \small " alt="\chi^2"/> test statistic with one degree of freedom from performing a likelihood ratio test comparing logistic regression models.</td></tr>
+<tr class="alt"><td valign="top">FSTAT </td><td valign="top">The F test statistic with 1 and <i>number of subjects</i>-3 degrees of freedom from performing an F-test comparing linear regression models.</td></tr>
+<tr><td valign="top">P </td><td valign="top">The <i>p</i>-value for the test of association of the anchor SNP.</td></tr>
+<tr class="alt"><td valign="top">FIT_STATUS_LR</td><td valign="top">The fit status for single SNP logistic (or linear) regression at the anchor SNP.</td></tr>
+<tr><td valign="top">CHISQ_LR</td><td valign="top">The <img src="http://latex.codecogs.com/png.latex?\inline \chi^2 \small " alt="\chi^2"/> test statistic with one degree of freedom for single SNP logistic regression at the anchor SNP.</td></tr>
+<tr class="alt"><td valign="top">FSTAT_LR</td><td valign="top">The F test statistic with 1 and <i>number of subjects</i>-3 degrees of freedom for single SNP linear regression at the anchor SNP.</td></tr>
+<tr><td valign="top">P_LR</td><td valign="top">The <i>p</i>-value for the test of association of the anchor SNP using single SNP logistic (or linear) regression.</td></tr>
+</table>
+<br />
+<div class="prevnext"><span class="left"><a href="installation.html">&lt;-prev</a>
+</span><span class="right"><a href="snipsnip-gwas.html">next-&gt;</a>
+</span></div><!-- End Right Column -->
+</div>
+</td>
+</tr></table>
+<!-- End Wrapper -->
+</td></tr></table>
+</div>
+ <!-- Start of StatCounter Code for Default Guide --> <script type="text/javascript"> var sc_project=8908722; var sc_invisible=1; var sc_security="87584528"; var scJsHost = (("https:" == document.location.protocol) ? "https://secure." : "http://www."); document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+ "statcounter.com/counter/counter.js'></"+"script>"); </script> <noscript><div class="statcounter"><a title="web analytics" href="http://statcounter.com/" target="_blank"><img class="statcounter" src="http://c.statcounter.com/8908722/0/87584528/1/" alt="web analytics"></a></div></noscript> <!-- End of StatCounter Code for Default Guide</body>
+</html>

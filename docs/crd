@@ -1,0 +1,1 @@
+g++ /home/nrajh/code/hat-docs/*.cpp -o /home/nrajh/code/hat-docs/hatdocs

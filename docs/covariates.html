@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>SnipSnip: GWAS for Poorly Tagged Data using Multiple SNPs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" type="text/css" href="snipsnipstyles.css" />
+<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body>
+<!-- Begin Wrapper -->
+<div id="wrapper">
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td>
+<!-- Begin Header -->
+<div id="header">
+<table><tr>
+<td>
+<img width="200" src="snipsniplogo.png" alt="SnipSnip: GWAS for Poorly Tagged Data using Multiple SNPs"/>
+</td>
+<td>
+<p style="margin-left: 1em;">SnipSnip: GWAS for Poorly Tagged Data using Multiple SNPs</p>
+</td></tr>
+</table>
+</div>
+<!-- End Header -->
+<!-- Begin Menu Navigation -->
+<ul id="menunav">
+<li><a href="index.html">Home</a></li>
+<li><a href="download.html">Download</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+<!-- End Menu Navigation -->
+
+</td></tr>
+<tr><td>
+<table border="0" cellpadding="0" cellspacing="0"><tr>
+<td valign="top">
+<!-- Begin Left Column -->
+<div id="leftcolumn">
+<!-- Begin Contents Navigation -->
+<div id="navcontainer">
+<ul>
+<li><a href="introduction.html">1 Introduction</a>
+<ul>
+<li><a href="introduction.html#information">1.1 Program information and citation</a></li>
+</ul>
+</li>
+<li><a href="installation.html">2 Installation</a>
+</li>
+<li><a href="using.html">3 Using SnipSnip</a>
+<ul>
+<li><a href="using.html#basic-usage">3.1 Basic Usage</a></li>
+<li><a href="using.html#options">3.2 Options</a></li>
+<li><a href="using.html#parameterfile">3.3 Parameter file</a></li>
+<li><a href="using.html#input">3.4 Input</a></li>
+<li><a href="using.html#output">3.5 Output</a></li>
+</ul>
+</li>
+<li><a href="snipsnip-gwas.html">4 SnipSnip GWAS</a>
+<ul>
+<li><a href="snipsnip-gwas.html#anchor-snp">4.1 Anchor SNP</a></li>
+<li><a href="snipsnip-gwas.html#partner-snp">4.2 Partner SNP</a></li>
+<li><a href="snipsnip-gwas.html#ai-test">4.3 AI Test</a></li>
+</ul>
+</li>
+<li><a href="metrics.html">5 Partner SNP Metrics</a>
+</li>
+<li><a href="windowsize.html">6 SNP Window Size</a>
+</li>
+<li><a href="linear.html">7 Linear Regression</a>
+</li>
+<li><a href="covariates.html">8 Covariates</a>
+</li>
+<li><a href="example.html">9 SnipSnip Examples</a>
+<ul>
+<li><a href="example.html#ex-basic">9.1 Basic example</a></li>
+<li><a href="example.html#X-chromosome">9.2 X chromosome</a></li>
+</ul>
+</li>
+<li><a href="references.html">References</a></li>
+</ul>
+</div>
+<!-- End Contents Navigation -->
+</div>
+<!-- End Left Column -->
+</td>
+<td valign="top">
+<!-- Begin Right Column -->
+<div id="rightcolumn">
+<h1>8 Covariates</h1>
+<p>
+It is possible to perform the AI test with a set of covariates. To do this use the <tt>-covar</tt> option. For example: </p>
+<pre>
+./snipsnip -covar covariates.dat -o myresults.dat mydata.bed
+</pre>
+<p>
+The format of the covariate file is the same as PLINK covariate files. That is, a text file where the first column is the pedigree ID, the second column is the individual ID and the remaining columns are the covariate values, where a value of -9 denotes a missing value (this may be changed with the <tt>-mqtv</tt> option). For example, a covariate file with 3 covariates may look as follows: </p>
+<pre>
+PEDID ID SMOKE ALCOHOL EX 
+WXA_T1233 WXA_T120 0.0037 0.0033 0.0207
+WXA_T1233 WXA_T121 -0.0019 0.022 0.0257
+WXA_T1234 WXA_T987 0.0104 0.0096 -0.0154
+...
+</pre>
+<p>
+The header line may be present or not. The covariates may be chosen with the header names as follows: </p>
+<pre>
+./snipsnip -covar covariates.dat -covar-name ALCOHOL,EX -o myresults.dat mydata.bed
+</pre>
+<p>
+or </p>
+<pre>
+./snipsnip -covar covariates.dat -covar-name ALCOHOL-EX -o myresults.dat mydata.bed
+</pre>
+<p>
+to include all covariates between and including these two. Note that no spaces should be used between the chosen covariate values. The covariates may also be chosen by their numbers. So the above may be written: </p>
+<pre>
+./snipsnip -covar covariates.dat -covar-number 2,3 -o myresults.dat mydata.bed
+</pre>
+<p>
+or </p>
+<pre>
+./snipsnip -covar covariates.dat -covar-number 2-3 -o myresults.dat mydata.bed
+</pre>
+<br />
+<div class="prevnext"><span class="left"><a href="linear.html">&lt;-prev</a>
+</span><span class="right"><a href="example.html">next-&gt;</a>
+</span></div><!-- End Right Column -->
+</div>
+</td>
+</tr></table>
+<!-- End Wrapper -->
+</td></tr></table>
+</div>
+ <!-- Start of StatCounter Code for Default Guide --> <script type="text/javascript"> var sc_project=8908722; var sc_invisible=1; var sc_security="87584528"; var scJsHost = (("https:" == document.location.protocol) ? "https://secure." : "http://www."); document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+ "statcounter.com/counter/counter.js'></"+"script>"); </script> <noscript><div class="statcounter"><a title="web analytics" href="http://statcounter.com/" target="_blank"><img class="statcounter" src="http://c.statcounter.com/8908722/0/87584528/1/" alt="web analytics"></a></div></noscript> <!-- End of StatCounter Code for Default Guide</body>
+</html>

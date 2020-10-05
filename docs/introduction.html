@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>SnipSnip: GWAS for Poorly Tagged Data using Multiple SNPs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" type="text/css" href="snipsnipstyles.css" />
+<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body>
+<!-- Begin Wrapper -->
+<div id="wrapper">
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td>
+<!-- Begin Header -->
+<div id="header">
+<table><tr>
+<td>
+<img width="200" src="snipsniplogo.png" alt="SnipSnip: GWAS for Poorly Tagged Data using Multiple SNPs"/>
+</td>
+<td>
+<p style="margin-left: 1em;">SnipSnip: GWAS for Poorly Tagged Data using Multiple SNPs</p>
+</td></tr>
+</table>
+</div>
+<!-- End Header -->
+<!-- Begin Menu Navigation -->
+<ul id="menunav">
+<li><a href="index.html">Home</a></li>
+<li><a href="download.html">Download</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+<!-- End Menu Navigation -->
+
+</td></tr>
+<tr><td>
+<table border="0" cellpadding="0" cellspacing="0"><tr>
+<td valign="top">
+<!-- Begin Left Column -->
+<div id="leftcolumn">
+<!-- Begin Contents Navigation -->
+<div id="navcontainer">
+<ul>
+<li><a href="introduction.html">1 Introduction</a>
+<ul>
+<li><a href="introduction.html#information">1.1 Program information and citation</a></li>
+</ul>
+</li>
+<li><a href="installation.html">2 Installation</a>
+</li>
+<li><a href="using.html">3 Using SnipSnip</a>
+<ul>
+<li><a href="using.html#basic-usage">3.1 Basic Usage</a></li>
+<li><a href="using.html#options">3.2 Options</a></li>
+<li><a href="using.html#parameterfile">3.3 Parameter file</a></li>
+<li><a href="using.html#input">3.4 Input</a></li>
+<li><a href="using.html#output">3.5 Output</a></li>
+</ul>
+</li>
+<li><a href="snipsnip-gwas.html">4 SnipSnip GWAS</a>
+<ul>
+<li><a href="snipsnip-gwas.html#anchor-snp">4.1 Anchor SNP</a></li>
+<li><a href="snipsnip-gwas.html#partner-snp">4.2 Partner SNP</a></li>
+<li><a href="snipsnip-gwas.html#ai-test">4.3 AI Test</a></li>
+</ul>
+</li>
+<li><a href="metrics.html">5 Partner SNP Metrics</a>
+</li>
+<li><a href="windowsize.html">6 SNP Window Size</a>
+</li>
+<li><a href="linear.html">7 Linear Regression</a>
+</li>
+<li><a href="covariates.html">8 Covariates</a>
+</li>
+<li><a href="example.html">9 SnipSnip Examples</a>
+<ul>
+<li><a href="example.html#ex-basic">9.1 Basic example</a></li>
+<li><a href="example.html#X-chromosome">9.2 X chromosome</a></li>
+</ul>
+</li>
+<li><a href="references.html">References</a></li>
+</ul>
+</div>
+<!-- End Contents Navigation -->
+</div>
+<!-- End Left Column -->
+</td>
+<td valign="top">
+<!-- Begin Right Column -->
+<div id="rightcolumn">
+<h1>1 Introduction</h1>
+<p>
+The SnipSnip program is the implementation of a GWAS method to detect causal variants using poorly tagged data by using multiple SNPs in low LD with the causal variant. Genome-wide association studies (GWAS) allow the detection of non-genotyped disease causing variants through the testing of nearby genotyped SNPs that are in strong linkage disequilibrium (LD) with the causal variant. This approach is naturally flawed when there are no genotyped SNPs in strong LD with the causal variant. There may, however, be several genotyped SNPs in weak LD with the causal variant that, when considered together, provide equivalent information. This observation provides the motivation for the popular (but computationally intensive) imputation-based approaches that are often used. </p>
+<p>
+SnipSnip is designed for the scenario where there are several genotyped SNPs in weak LD with a causal variant. Our approach proceeds by selecting, for each genotyped &ldquo;anchor&rdquo; SNP, a nearby genotyped &ldquo;partner&rdquo; SNP (chosen, on the basis of a specific algorithm we have developed, to be the optimal partner). These two SNPs are then used as predictors in a linear or logistic regression analysis, in order to generate a final significance test associated with the anchor SNP. </p>
+<p>
+SnipSnip is designed for use with <b>unrelated individuals</b> either in a case-control analysis or a quantitative trait analysis. </p>
+<p>
+Our method, in some cases, potentially eliminates the need for more complex methods such as sequencing and imputation or haplotype analysis, and provides a useful additional test that may be used with existing GWAS data to identify genetic regions of interest. </p>
+<p>
+For an example application of SnipSnip see <a href="references.html#chen:etal:15">Chen et al. (2015)</a>. </p>
+<h2><a name="information">1.1 Program information and citation</a></h2>
+<p>
+For details concerning the methodology of the SnipSnip GWAS, please see the accompanying manuscript <a href="references.html#howey:etal:14">Howey and Cordell (2014)</a>. </p>
+<p>
+The program SnipSnip is written in C++ and executables are available for Linux and Windows from the download page, as well as the source code. </p>
+<p>
+Copyright, 2013 Richard Howey and Heather Cordell, GNU General Public License, version 3. </p>
+<br />
+<div class="prevnext"><span class="right"><a href="installation.html">next-&gt;</a>
+</span></div><!-- End Right Column -->
+</div>
+</td>
+</tr></table>
+<!-- End Wrapper -->
+</td></tr></table>
+</div>
+ <!-- Start of StatCounter Code for Default Guide --> <script type="text/javascript"> var sc_project=8908722; var sc_invisible=1; var sc_security="87584528"; var scJsHost = (("https:" == document.location.protocol) ? "https://secure." : "http://www."); document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+ "statcounter.com/counter/counter.js'></"+"script>"); </script> <noscript><div class="statcounter"><a title="web analytics" href="http://statcounter.com/" target="_blank"><img class="statcounter" src="http://c.statcounter.com/8908722/0/87584528/1/" alt="web analytics"></a></div></noscript> <!-- End of StatCounter Code for Default Guide</body>
+</html>
